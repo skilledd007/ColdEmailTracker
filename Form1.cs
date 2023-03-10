@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using MailKit.Net.Smtp;
+using MailKit;
+using MimeKit;
 
 namespace ColdEmailTracker
 {
@@ -59,9 +62,9 @@ namespace ColdEmailTracker
                 Console.WriteLine(last_name);
             } else
             {
-                
+
             }
-            
+
         }
 
         private void Company_Text_Box_TextChanged(object sender, EventArgs e)
@@ -91,7 +94,7 @@ namespace ColdEmailTracker
         }
 
         private void FollowUpPicker_ValueChanged(object sender, EventArgs e)
-        {   
+        {
             last_email = FollowUpPicker.Value;
             Console.WriteLine("Last email date: ");
             Console.WriteLine(last_email.ToString());
@@ -100,7 +103,7 @@ namespace ColdEmailTracker
         private void Attach_Resume_Click(object sender, EventArgs e)
         {
             var resumeFileDialog = new OpenFileDialog();
-            if(DialogResult.OK == resumeFileDialog.ShowDialog())
+            if (DialogResult.OK == resumeFileDialog.ShowDialog())
             {
                 var file = resumeFileDialog.FileName;
                 resumeFP = file.ToString();
@@ -109,6 +112,36 @@ namespace ColdEmailTracker
                 ResumeFileName.Text = Path.GetFileName(resumeFileDialog.FileName);
 
             }
+        }
+
+        private void Submit_Click(object sender, EventArgs e)
+        {
+            //MailMessage message = new MailMessage("testcoldemailersend@gmail.com", "testcoldemailerreciever@gmail.com", "Hi", "Hi There");
+            var email = new MimeMessage();
+            email.From.Add(new MailboxAddress("Test Sender", "testcoldemailersend@gmail.com"));
+            email.To.Add(new MailboxAddress("Test Reciever", "testcoldemailerreciever@gmail.com"));
+            email.Subject = "Hai";
+            email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+            {
+                Text = "<b> Hello This is first email sent from C#! </b>"
+            };
+            using(var smtp = new SmtpClient()) {
+               
+                try
+                {
+                    smtp.Connect("smtp.gmail.com", 587, false);
+                    smtp.Authenticate("testcoldemailersend@gmail.com", "ynqdtviedkvlidry");
+                    smtp.Send(email);
+                    smtp.Disconnect(true);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("FAILURE" + ex.Message);
+                }
+               
+            }
+            
         }
     }
 }

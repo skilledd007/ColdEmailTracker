@@ -172,6 +172,7 @@
             this.Submit.TabIndex = 13;
             this.Submit.Text = "Perform Outreach!";
             this.Submit.UseVisualStyleBackColor = true;
+            this.Submit.Click += new System.EventHandler(this.Submit_Click);
             // 
             // Form1
             // 
