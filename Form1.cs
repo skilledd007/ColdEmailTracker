@@ -26,5 +26,35 @@ namespace ColdEmailTracker
         {
 
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Name_Text_Box_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Company_Text_Box_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EmailDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
