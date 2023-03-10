@@ -92,6 +92,7 @@
             this.Position_Text_Box.Size = new System.Drawing.Size(481, 29);
             this.Position_Text_Box.TabIndex = 4;
             this.Position_Text_Box.Text = "";
+            this.Position_Text_Box.TextChanged += new System.EventHandler(this.Position_Text_Box_TextChanged);
             // 
             // label3
             // 
@@ -131,6 +132,7 @@
             this.FollowUpPicker.Name = "FollowUpPicker";
             this.FollowUpPicker.Size = new System.Drawing.Size(200, 20);
             this.FollowUpPicker.TabIndex = 9;
+            this.FollowUpPicker.ValueChanged += new System.EventHandler(this.FollowUpPicker_ValueChanged);
             // 
             // EmailDatePicker
             // 
@@ -149,6 +151,7 @@
             this.Attach_Resume.TabIndex = 11;
             this.Attach_Resume.Text = "Attach Resume";
             this.Attach_Resume.UseVisualStyleBackColor = true;
+            this.Attach_Resume.Click += new System.EventHandler(this.Attach_Resume_Click);
             // 
             // ResumeFileName
             // 
